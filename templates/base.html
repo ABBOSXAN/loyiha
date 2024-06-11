@@ -1,0 +1,26 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asosiy sahifa</title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+</head>
+<body>
+<header class="asosiy">
+    <a href="{% url 'home' %}">Home</a> |
+    <a href="{% url 'about' %}">About me</a>|
+    <a href="{% url 'post_new' %}">Yangi post qo'shish</a>
+
+</header>
+{% if user.is_authenticated %}
+<p>{{user.username}}, saytga xush kelibsiz!</p>
+<p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+<p>Siz saytga kirmagansiz</p>
+<a href="{% url 'login' %}">Log In</a>|
+<a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
+</body>
+{% block content %}
+{% endblock content %}
+</html>
